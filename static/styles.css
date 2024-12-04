@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('/static/resources/fonts/Geist-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+body {
+    font-family: 'Geist', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #b22e6c;
+    text-size-adjust: 2;
+}
+
+.tabs {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    background: #e4e4e4;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    transition: background 0.3s;
+}
+
+.tab:hover {
+    background: #d4d4d4;
+}
+
+.active {
+    background: #fff;
+    border-bottom: 2px solid #b22e6c;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #e4e4e4;
+    border-radius: 0 0 5px 5px;
+    background: #fff;
+}
+
+.active-content {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+} 
+
+
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="text"],
+input[type="number"]
+{
+    width: 97.6%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #efefef;
+}
+
+
+#submitBtn {
+    background-color: #b22e6c;
+    color: #f1f0f0;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Geist', sans-serif;
+    font-weight: bolder;
+}
+
+#submitBtn:hover {
+    background-color: #8e2556;
+}
+
+#playBtn {
+    background-color: #f18035;
+    color: #f1f0f0;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    font-size: 13px;
+    font-family: 'Geist', sans-serif;
+    font-weight: bolder;
+}
+
+#playBtn:hover {
+    background-color: #d55c09;
+}
+
+#playBtn:disabled {
+    opacity: 0.5; /* Or another styling to indicate it's disabled */
+    cursor: not-allowed; /* This is useful to show it's not clickable */
+    pointer-events: none;
+  }
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 2772 / 738; /* Maintain aspect ratio */
+}
+
+.small-text {
+    font-size: 0.8em;  /* Makes the text inside the span smaller */
+    color: #555;       /* Optional: Change the color to make it less prominent */
+}

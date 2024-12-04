@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Generator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" type="image/png" href="/static/resources/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/static/resources/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/static/resources/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/resources/favicon/apple-touch-icon.png" />
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="/static/resources/Logo.png" alt="Logo">
+        </div>
+        <h1>Transport Stream Generator</h1>
+        <div class="tabs">
+            <div class="tab active" data-tab="video">Video</div>
+            <div class="tab" data-tab="audio">Audio</div>
+            <div class="tab" data-tab="file">Output</div>
+        </div>
+
+        <form id="video-form">
+            <div class="tab-content active-content" id="video">
+                <h2>Video Settings</h2>
+                <div class="form-group">
+                    <label for="videoinput">Use External Input</label>
+                    <input type="checkbox" id="videoinput" name="videoinput" value="true" title="This option enables external input video to be streamed">
+                </div>
+                <div class="form-group">
+                    <label for="signal">Signal Type:</label>
+                    <select name="signal" id="signal">
+                        <option value="nullsrc">Null Source</option>
+                        <option value="rgbtestsrc">RGB Test Source</option>
+                        <option value="smptebars">SMPTE Bars</option>
+                        <option value="smptehdbars">SMPTE HD Bars</option>
+                        <option value="testsrc">Test Source</option>
+                        <option value="testsrc2">Test Source 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resolution">Video Resolution:</label>
+                    <select name="resolution" id="resolution">
+                        <option value="640x480">640x480</option>
+                        <option value="800x600">800x600</option>
+                        <option value="1024x768">1024x768</option>
+                        <option value="1280x720">1280x720</option>
+                        <option value="1280x800">1280x800</option>
+                        <option value="1366x768">1366x768</option>
+                        <option value="1600x900">1600x900</option>
+                        <option value="1920x1080">1920x1080</option>
+                        <option value="1920x1200">1920x1200</option>
+                        <option value="2560x1440">2560x1440</option>
+                        <option value="2560x1600">2560x1600</option>
+                        <option value="3840x2160">3840x2160</option>
+                        <option value="5120x2880">5120x2880</option>
+                        <option value="7680x4320">7680x4320</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="framerate">Frame Rate:</label>
+                    <select name="framerate" id="framerate">
+                        <option value="24">24 FPS</option>
+                        <option value="25">25 FPS</option>
+                        <option value="30">30 FPS</option>
+                        <option value="48">48 FPS</option>
+                        <option value="50">50 FPS</option>
+                        <option value="59">59 FPS</option>
+                        <option value="59.94">59.94 FPS</option>
+                        <option value="60">60 FPS</option>
+                        <option value="120">120 FPS</option>
+                        <option value="240">240 FPS</option>
+                        <option value="15">15 FPS</option>
+                        <option value="29.97">29.97 FPS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="videoCodec ">Video Codec:</label>
+                    <select name="videoCodec" id="videoCodec">
+                        <option value="avc">AVC - H264</option>
+                        <option value="hevc">HEVC - H265</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pixelFormat">Pixel Format:</label>
+                    <select name="pixelFormat" id="pixelFormat">
+                        <option value="nv12">NV12 - YUV(IL) 4:2:0 8 bit</option>
+                        <option value="nv16">NV16 - YUV(IL) 4:2:2 8 bit</option>
+                        <option value="yuv420p">YUV420P - YUV 4:2:0 8 bit</option>
+                        <option value="yuv422p">YUV422P - YUV 4:2:2 8 bit</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="videoBitrate">Video Bitrate:</label>
+                    <input type="number" id="videoBitrate" name="videoBitrate" placeholder="Enter video stream bitrate (mbps)" max="50" value="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="scanType">Scan Type:</label>
+                    <select name="scanType" id="scanType">
+                        <option value="pgs">Progressive Scan Type</option>
+                        <option value="ilc">Interlaced Scan Type</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tab-content" id="audio">
+                <h2>Audio Settings</h2>
+                <div class="form-group">
+                    <label for="enableAudio">Enable Audio</label>
+                    <input  type="checkbox" id="enableAudio" name="enableAudio" value="true">
+                </div>
+                <div class="form-group" id="audio-input-settings" style="display: none;">
+                    <label for="audioinput">Use Audio from External Video</label>
+                    <input type="checkbox" id="audioinput" name="audioinput" value="true" title="This option uses audio from the external video file specified">
+                </div>
+                <div class="form-group" id="audioTracksDiv" style="display: none;">
+                    <label for="audioTracks">Number of Audio Tracks:</label>
+                    <input type="number" id="audioTracks" name="audioTracks" max="16" value="0">
+                </div>
+                <div id="audioTrackConfigs"></div>
+            </div>
+
+            <div class="tab-content" id="file">
+                <h2>Output Settings</h2>
+                <div class="form-group">
+                    <label for="stream">Enable Streaming</label>
+                    <input type="checkbox" id="stream" name="stream" value="true" title="This option enables generating TS to be streamed to a particular destination">
+                </div>
+                <div class="form-group" id="fileNameField">
+                    <label for="fileName">File Name <span class="small-text">(will overwrite if exists)</span> : </label>
+                    
+                    <input type="text" id="fileName" name="fileName" placeholder="Enter file name" required>
+                </div>
+                <div id="ipFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="destIp">Destination IP Address:</label>
+                        <input type="text" id="destIp" name="destIp" placeholder="Enter valid IP address">
+                    </div>
+                    <div class="form-group">
+                        <label for="destPort">Destination Port:</label>
+                        <input type="text" id="destPort" name="destPort" placeholder="Enter remote port">
+                    </div>
+                </div>
+                <button disabled type="button" id="playBtn">
+                    Play with VLC Media Player
+                </button>
+            </div>
+            <br>
+            <button type="button" id="submitBtn">Generate Transport Stream</button>
+        </form>
+
+        <script src="/static/scripts.js"></script>
+    </div>
+</body>
+</html>
