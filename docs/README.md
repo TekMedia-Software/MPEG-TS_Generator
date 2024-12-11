@@ -56,6 +56,13 @@ This project allows you to generate MPEG-TS (Transport Stream) files from video 
 ## Usage
 
 Once the server is running, simply open your browser and go to localhost:8080. The interface allows you to configure audio/video inputs, apply filters, and either download or stream the generated MPEG-TS file.
+
+## Sample Screenshots
+
+![Sample Screenshot 1](Sample%20Screenshots/Video.png)
+![Sample Screenshot 2](Sample%20Screenshots/Audio.png)
+![Sample Screenshot 3](Sample%20Screenshots/File_Output.png)
+![Sample Screenshot 4](Sample%20Screenshots/IP_Output.png)
         
 ## Contact 
 
